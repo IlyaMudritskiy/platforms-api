@@ -19,16 +19,21 @@ namespace PlatformService.Data
 
         public IEnumerable<Platform> GetAllPlatforms()
         {
-            throw new System.NotImplementedException();
+            return _context.Platforms.ToList();
         }
 
         public Platform GetPlatformById(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.Platforms.FirstOrDefault(p => p.Id == id);
         }
         public void CreatePlatform(Platform plat)
         {
-            throw new System.NotImplementedException();
+            if (plat == null)
+            {
+                throw new ArgumentNullException(nameof(plat));
+            }
+
+            _context.Platforms.Add(plat);
         }
     }
 }
